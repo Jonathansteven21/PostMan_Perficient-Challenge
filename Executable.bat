@@ -1,0 +1,1 @@
+newman run SwaggerPetstoreAPI.Boot-Camp.json -r htmlextra --reporter-htmlextra-browserTitle "SwaggerPetstoreAPI.Boot-Camp" --reporter-htmlextra-export ./SwaggerPetstoreAPI_Reports/SwaggerPetStoreAPI_Report.html

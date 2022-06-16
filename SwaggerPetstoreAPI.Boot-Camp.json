@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "40ba08ef-03fe-42f6-91ae-0489351953d2",
+		"name": "Swagger Petstore API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21396697"
+	},
+	"item": [
+		{
+			"name": "Rest",
+			"item": [
+				{
+					"name": "Pets",
+					"item": [
+						{
+							"name": "P_Pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status code will 200 Ok\", function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that the pet created has the submitted tags name\", function(){\r",
+											"    pm.expect(pm.response.json().tags[0].name).to.equal(\"flightless\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that the pet created has the submitted name\", function(){\r",
+											"    pm.expect(pm.response.json().name).to.equal(\"Piolin\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that the pet created has the submitted status\", function(){\r",
+											"    pm.expect(pm.response.json().status).to.equal(\"sold out\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 4,\r\n    \"category\": {\r\n        \"id\": 2,\r\n        \"name\": \"bird\"\r\n    },\r\n    \"name\": \"Piolin\",\r\n    \"tags\": [\r\n        {\r\n            \"id\": 1,\r\n            \"name\": \"flightless\"\r\n        }\r\n    ],\r\n    \"status\": \"sold out\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://petstore.swagger.io/v2/pet"
+							},
+							"response": []
+						},
+						{
+							"name": "G_Pet",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status code will 200 Ok\", function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that the pet created has the submitted id\", function(){\r",
+											"    pm.expect(pm.response.json().id).to.equal(4);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://petstore.swagger.io/v2/pet/4"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Orders",
+					"item": [
+						{
+							"name": "P_Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status code will 200 Ok\", function(){\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that the order created has the submitted tags name\", function(){\r",
+											"    pm.expect(pm.response.json().id).to.equal(1);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"id\": 1,\r\n  \"petId\": 1,\r\n  \"quantity\": 2,\r\n  \"shipDate\": \"2022-06-15T02:49:34.683Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://petstore.swagger.io/v2/store/order"
+							},
+							"response": []
+						},
+						{
+							"name": "G_Store",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Verify status code will 200 Ok\", function () {\r",
+											"pm.collectionVariables.get(\"variable_key\");\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Verify that the pet created has the submitted id\", function(){\r",
+											"    pm.expect(pm.response.json().id).to.equal(1);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "https://petstore.swagger.io/v2/store/order/1"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
